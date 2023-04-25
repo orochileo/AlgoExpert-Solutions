@@ -1,0 +1,13 @@
+/*
+This is a typical Topological sort problem.
+First map the supply to the recipes
+Second map the recipe to the number of ingredients
+*/
+
+class Solution {
+
+    public List<String> findAllRecipes(String[] recipes, List<List<String>> ingredients, String[] supplies) {
+        
+    }
+
+}

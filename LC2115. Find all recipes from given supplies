@@ -7,7 +7,39 @@ Second map the recipe to the number of ingredients
 class Solution {
 
     public List<String> findAllRecipes(String[] recipes, List<List<String>> ingredients, String[] supplies) {
-        
+        // 1. Construct the adjacency list
+        Map<String, List<String>> adjList = new HashMap<>();
+        Map<String, Integer> indegree = new HashMap<>();
+        for(int i = 0; i < ingredients.size(); i++) {
+            for(int j = 0; j < ingredients.get(i).size(); j++) {
+                adjList.putIfAbsent(ingredients.get(i).get(j), new ArrayList<>());
+                adjList.get(ingredients.get(i).get(j)).add(recipes[i]);
+                indegree.put(recipes[i], indegree.getOrDefault(recipes[i], 0) + 1);
+            }
+        }
+
+        // 2. Initialize topological sort, use the queue to store supplies
+        Queue<String> q = new LinkedList<>();
+        for(String s : supplies) {
+            q.add(s);
+        }
+        List<String> res = new ArrayList<>();
+        while(!q.isEmpty()) {
+            String supply = q.poll();
+            // If we never use this supply, simply skip it
+            if(!adjList.containsKey(supply)) {
+                continue;
+            }
+            for(String rcp : adjList.get(supply)) {
+                int ind = indegree.get(rcp) - 1;
+                indegree.put(rcp, ind);
+                if(ind == 0) {
+                    q.add(rcp);
+                    res.add(rcp);
+                }
+            }
+        }
+        return res;
     }
 
 }

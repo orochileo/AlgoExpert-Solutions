@@ -1,0 +1,28 @@
+For better or worse, you will need five parts to prepare in your next SDE position.
+1. Your resume
+2. Solving coding questions
+3. Object-oriented design
+4. System Design
+5. Behavioral Questions
+
+Section 1 Resume
+A resume should briefly summarize your past experience as a software engineer, the projects you worked on, the data of your work.
+Make sure that the qualifications on your resume match the Job Description.
+
+Section 2 Coding
+For starters, I recommend Neetcode 150: https://neetcode.io/practice
+If you have more time, take a look at Grind 169: https://www.techinterviewhandbook.org/grind75?hours=40&weeks=26
+And of course, Leetcode premium is a must :)
+I would recommend solving problems in tags to get a deeper understanding
+
+Section 3 OOD
+There are many good OOD tutorials, you can check this one out: https://www.youtube.com/watch?v=fJW65Wo7IHI&list=PLGLfVvz_LVvS5P7khyR4xDp7T9lCk9PgE
+
+Section 4 System Design
+I will recommend two textbooks for System Design Interview: 1. Educative.io, Grokking the System Design interview; 2. Alex Xu, System Design Interview Volume 1&2
+Also, if you know Chinese, you can take a look at this channel: https://www.youtube.com/@ScottShiCS/videos
+If you are targeting for a senior-level role, I recommend reading DDIA
+
+Section 5 BQ
+STAR method is the ultimate key in solving BQ questions. Prepare common questions like "What was the toughest project you ever worked on?" "How to balance your life and work when there is a tight deadline?"
+Also, it's always good to take a look at Amazon's Leadership Principles.

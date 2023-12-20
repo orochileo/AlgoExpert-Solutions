@@ -1,0 +1,51 @@
+/*
+To solve this problem, you need to record the columns and their corresponding nodes, so we need a map to record this pair relationship
+We can iterate the tree with BFS, which iterates the the tree with rows in a growing fashion. We put the Pair<TreeNode, Integer> into the queue to record its corresponding column numbers.
+Then we go to the children of these nodes.
+Sort the map based on the keyset, add their values to the final result.
+*/
+
+class Solution {
+    public List<List<Integer>> verticalOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if(root == null) {
+            return res;
+        }
+
+        Map<Integer, List<Integer>> columnTable = new HashMap<>();
+        Queue<Pair<TreeNode, Integer>> q = new ArrayDeque<>();
+        int column = 0;
+        q.add(new Pair(root, column));
+
+        while(!q.isEmpty()) {
+            Pair<TreeNode, Integer> cur = q.poll();
+            root = cur.getKey();
+            column = cur.getValue();
+
+            if(root != null) {
+                if(!columnTable.containsKey(column)) {
+                    columnTable.put(column, new ArrayList<>());
+                }
+                columnTable.get(column).add(root.val);
+            }
+
+            if(root.left != null) {
+                q.offer(new Pair(root.left, column - 1));
+            }
+            if(root.right != null) {
+                q.offer(new Pair(root.right, column + 1));
+            }
+        }
+
+        List<Integer> sortedKeys = new ArrayList<>(columnTable.keySet());
+        Collections.sort(sortedKeys);
+        for(int k : sortedKeys) {
+            res.add(columnTable.get(k));
+        }
+
+        return res;
+    }
+}
+
+// One optimization is to record the minColumn and maxColumn, and update them during each iteration.
+// This way, we don't need to sort the map, we just iterate through all the values of the column from minColumn to maxColumn.
